@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据库技术与应用 | AI 时代的数据基础能力</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --thu-purple: #660874;
+            --text-main: #2d3748;
+            --text-light: #718096;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
+            line-height: 1.7;
+            background-color: #ffffff;
+        }
+        /* 主容器最大宽度 850px */
+        .container-slim {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+        .section-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--thu-purple);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        .section-header::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 1.25rem;
+            background-color: var(--thu-purple);
+            margin-right: 0.75rem;
+            border-radius: 2px;
+        }
+        section {
+            margin-bottom: 3.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        th {
+            text-align: left;
+            padding: 12px 10px;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .badge {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-release { border: 1px solid #cbd5e0; color: #4a5568; }
+        .badge-due { border: 1px solid #feb2b2; color: #c53030; }
+        a { color: var(--thu-purple); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.2s; }
+        a:hover { border-bottom: 1px solid var(--thu-purple); }
+
+        .hero-banner {
+            width: 100%;
+            height: 180px; 
+            background: linear-gradient(135deg, #1a1a1a 0%, #3a1a4a 100%);
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-svg-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            md:font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+
+        .hero-main-msg {
+            font-size: 1.25rem;
+            md:font-size: 1.6rem;
+            font-weight: 800;
+            border-top: 1px solid rgba(255,255,255,0.25);
+            padding-top: 0.75rem;
+            line-height: 1.3;
+        }
+
+        @keyframes flow {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+        .data-line {
+            stroke: rgba(255,255,255,0.2);
+            stroke-width: 0.5;
+            stroke-dasharray: 5 5;
+            animation: flow 10s linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="py-10 md:py-12 bg-white border-b border-gray-50">
+        <div class="container-slim">
+            <!-- 顶部学期信息 -->
+            <div class="mb-4 text-center md:text-left">
+                <p class="text-xs md:text-sm font-bold tracking-widest text-gray-400">清华大学 · 2026年春季学期</p>
+            </div>
+
+            <!-- 标题与校徽对齐区域 -->
+            <div class="flex flex-col md:flex-row items-center md:items-center md:justify-between gap-6 mb-8">
+                <div class="text-center md:text-left">
+                    <h1 style="color: var(--thu-purple);">
+                        <div class="text-2xl md:text-5xl font-extrabold mb-2 md:mb-3 leading-tight">数据库技术与应用</div>
+                        <div class="text-base md:text-2xl font-medium opacity-80 leading-tight">—— AI 时代的数据基础能力</div>
+                    </h1>
+                </div>
+
+                <!-- 校徽：已缩小 30%（移动端 h-14，桌面端 h-28） -->
+                <div class="thu-logo-container flex items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Tsinghua_University_Logo.svg" alt="清华大学校徽" class="h-14 md:h-28 w-auto object-contain self-center">
+                </div>
+            </div>
+
+            <!-- 教师及地点信息 -->
+            <div class="flex flex-col md:flex-row flex-wrap justify-center md:justify-start gap-y-2 md:gap-x-8 text-sm text-gray-600">
+                <span><strong>教师:</strong> 计算机系 <a href="https://dbgroup.cs.tsinghua.edu.cn/jnwang/" target="_blank" class="hover:text-purple-900 font-medium">王健楠</a></span>
+                <span><strong>地点:</strong> 自强科技楼 5310</span>
+                <span><strong>时间:</strong> 周四 09:50 - 12:15</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-slim mt-8">
+        <div class="hero-banner">
+            <svg class="hero-svg-bg" viewBox="0 0 800 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                <path class="data-line" d="M0,90 Q200,20 400,90 T800,90" fill="none" />
+                <path class="data-line" d="M0,60 Q200,120 400,60 T800,60" fill="none" />
+                <circle cx="200" cy="60" r="2" fill="var(--thu-purple)" opacity="0.6" />
+                <circle cx="400" cy="90" r="3" fill="#fff" opacity="0.5" />
+                <circle cx="600" cy="70" r="2" fill="var(--thu-purple)" opacity="0.6" />
+            </svg>
+            
+            <div class="hero-content">
+                <div class="hero-tagline">AI Era Data Foundation</div>
+                <div class="hero-main-msg text-sm md:text-2xl">赋能 AI 时代的底层数据思维与系统能力</div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container-slim py-4">
+        
+        <!-- 课程简介 -->
+        <section>
+            <h2 class="section-header">课程简介</h2>
+            <div class="space-y-4 text-gray-700 text-justify text-sm md:text-base">
+                <p>
+                    在人工智能迅速发展的今天，数据已成为驱动 AI 突破的核心要素。无论是大模型训练、数据驱动决策还是 AI4Science，如何高效管理复杂多源数据，都是 AI 时代学生不可或缺的底层能力。
+                </p>
+                <p>
+                    本课程以数据库技术的发展为主线，系统介绍其在数据科学、数据工程与 Data+AI 中的核心作用与演进：
+                </p>
+                <ul class="list-disc list-outside ml-5 space-y-2">
+                    <li><strong>数据科学：</strong>通过数据处理、可视化与统计建模，学习如何从数据中发现规律、形成可信结论</li>
+                    <li><strong>数据工程：</strong>通过 SQL、查询优化与数据建模，学习如何将数据处理流程从实验环境推进到生产级系统</li>
+                    <li><strong>Data+AI：</strong>通过 AI4Data 和 Data4AI，学习 AI 如何赋能数据库以及数据库如何反向支撑 AI 应用。</li>
+                </ul>
+                <p>
+                    课程配有基于真实问题的实验与大作业，引导学生将课堂知识应用于实际场景，为后续科研与工程实践奠定基础。
+                </p>
+            </div>
+        </section>
+
+        <!-- 教学内容 -->
+        <section>
+            <h2 class="section-header">教学内容</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 text-sm text-gray-600 pt-2">
+                <ul class="list-none space-y-2">
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 数据库发展历史</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 表格数据分析（Pandas）</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 数据准备</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 数据可视化</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 数据统计</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 数据驱动的机器学习</li>
+                </ul>
+                <ul class="list-none space-y-2">
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> SQL 查询</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 查询性能优化</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 数据建模</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> 半结构化数据</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> LLM4Data</li>
+                    <li><span class="text-purple-800 mr-2 font-bold">·</span> Data4LLM</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 评分标准 - 根据上传图片更新 -->
+        <section>
+            <h2 class="section-header">评分标准</h2>
+            <div class="text-sm text-gray-700 space-y-3 ml-1">
+                <div class="flex items-start">
+                    <span class="text-purple-800 mr-2 font-bold">·</span>
+                    <p><strong>平时实验 (32%)：</strong>共计 8 次实验，每次占比 4%。</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-purple-800 mr-2 font-bold">·</span>
+                    <p>
+                        <strong>课程项目 (68%)：</strong>
+                        选题汇报 (18%) + 项目汇报 (25%) + 项目成果 (25%，含报告、代码与视频)。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教学日历 -->
+        <section>
+            <h2 class="section-header">教学日历</h2>
+            <div class="overflow-x-auto -mx-1 px-1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;" class="whitespace-nowrap">周次</th>
+                            <th style="width: 80px;" class="whitespace-nowrap">日期</th>
+                            <th>教学主题</th>
+                            <th style="width: 80px;" class="whitespace-nowrap text-center">发布</th>
+                            <th style="width: 140px;" class="whitespace-nowrap text-center">截止</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr><td class="whitespace-nowrap">第 1 周</td><td>02-26</td><td>课程介绍与数据库历史</td><td class="text-center"><span class="badge badge-release">A1</span></td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 2 周</td><td>03-05</td><td>Pandas I：基础数据操作</td><td class="text-center"><span class="badge badge-release">A2</span></td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 3 周</td><td>03-12</td><td>Pandas II：高级数据操作</td><td class="text-center">—</td><td class="text-center"><span class="badge badge-due">A1</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 4 周</td><td>03-19</td><td>数据准备 I：结构化数据</td><td class="text-center"><span class="badge badge-release">A3</span></td><td class="text-center"><span class="badge badge-due">A2</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 5 周</td><td>03-26</td><td>数据准备 II：非结构化数据</td><td class="text-center">—</td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 6 周</td><td>04-02</td><td>数据可视化</td><td class="text-center"><span class="badge badge-release">A4</span></td><td class="text-center"><span class="badge badge-due">A3</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 7 周</td><td>04-09</td><td>数据统计</td><td class="text-center">—</td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 8 周</td><td>04-16</td><td>数据驱动的机器学习</td><td class="text-center"><span class="badge badge-release">A5</span></td><td class="text-center"><span class="badge badge-due">A4</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 9 周</td><td>04-23</td><td>SQL I：基础查询</td><td class="text-center">—</td><td class="text-center"><span class="badge badge-due">选题汇报</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 10 周</td><td>04-30</td><td class="italic text-gray-500">五一假期（不上课）</td><td class="text-center"><span class="badge badge-release">A6</span></td><td class="text-center"><span class="badge badge-due">A5</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 11 周</td><td>05-07</td><td>SQL II：高级查询</td><td class="text-center">—</td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 12 周</td><td>05-14</td><td>查询性能优化</td><td class="text-center"><span class="badge badge-release">A7</span></td><td class="text-center"><span class="badge badge-due">A6</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 13 周</td><td>05-21</td><td>数据建模</td><td class="text-center">—</td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 14 周</td><td>05-28</td><td>半结构化数据</td><td class="text-center">—</td><td class="text-center">—</td></tr>
+                        <tr><td class="whitespace-nowrap">第 15 周</td><td>06-04</td><td>LLM4Data</td><td class="text-center"><span class="badge badge-release">A8</span></td><td class="text-center"><span class="badge badge-due">A7</span></td></tr>
+                        <tr><td class="whitespace-nowrap">第 16 周</td><td>06-11</td><td>Data4LLM</td><td class="text-center">—</td><td class="text-center">—</td></tr>
+                        <tr class="font-bold bg-purple-50">
+                            <td class="whitespace-nowrap">第 17 周</td>
+                            <td>—</td>
+                            <td>课程总结与项目展示</td>
+                            <td class="text-center">—</td>
+                            <td class="text-center">
+                                <div class="flex flex-col items-center gap-1">
+                                    <span class="badge badge-due">A8</span>
+                                    <span class="badge badge-due">项目终审</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-2 block md:hidden">注：表格支持左右滑动查看全部内容</p>
+        </section>
+    </main>
+
+    <footer class="py-8 border-t border-gray-100">
+        <div class="container-slim text-xs text-gray-400 text-center">
+            &copy; 2026 清华大学 · 数据库技术与应用
+        </div>
+    </footer>
+
+</body>
+</html>
