@@ -75,6 +75,23 @@
         .badge-due { border: 1px solid #feb2b2; color: #c53030; }
         a { color: var(--thu-purple); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.2s; }
         a:hover { border-bottom: 1px solid var(--thu-purple); }
+        .primary-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0.9rem;
+            background: rgba(102, 8, 116, 0.08);
+            border: 1px solid rgba(102, 8, 116, 0.2);
+            border-radius: 999px;
+            font-weight: 700;
+            border-bottom: none;
+            box-shadow: 0 1px 2px rgba(102, 8, 116, 0.08);
+        }
+        .primary-link:hover {
+            border-bottom: none;
+            background: rgba(102, 8, 116, 0.14);
+            border-color: rgba(102, 8, 116, 0.32);
+        }
 
         .hero-banner {
             width: 100%;
@@ -284,7 +301,7 @@
                     </table>
                 </div>
                 <p>
-                    详细要求见 <a href="project-instruction.html">课程项目说明</a>。
+                    <a href="project-instruction.html" class="primary-link">查看课程项目说明</a>
                 </p>
             </div>
         </section>
