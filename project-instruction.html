@@ -13971,16 +13971,35 @@ a.anchor-link {
     <style type="text/css">
     body.jp-Notebook {
       background: #ffffff;
+      padding: 0;
     }
     .page-shell {
-      max-width: 850px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 2rem 1.25rem 4rem;
       box-sizing: border-box;
     }
+    .page-shell .jp-InputPrompt {
+      display: none;
+    }
+    .page-shell .jp-Cell-inputWrapper {
+      display: block;
+    }
+    .page-shell .jp-MarkdownOutput {
+      padding-left: 0;
+    }
+    .page-shell .jp-RenderedHTMLCommon {
+      padding-right: 0;
+    }
     @media (max-width: 768px) {
       .page-shell {
         padding: 1rem 1.25rem 3rem;
+      }
+      .page-shell .jp-MarkdownOutput {
+        padding-left: 0;
+      }
+      .page-shell .jp-RenderedHTMLCommon {
+        padding-right: 0;
       }
     }
     </style>
